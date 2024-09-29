@@ -10,7 +10,7 @@ X = np.vstack((X1, X2))
 Y = np.hstack((np.zeros(len(X1)), np.ones(len(X2))))
 
 class RBFNetwork:
-    def __init__(self, n_hidden=3, sigma=1):
+    def __init__(self, n_hidden=6, sigma=1):
         self.n_hidden = n_hidden
         self.sigma = sigma
         # 随机选择RBF中心
@@ -43,7 +43,7 @@ class RBFNetwork:
         return np.mean(predictions.flatten() == Y)
 
 # 创建RBF网络实例
-rbf_network = RBFNetwork(n_hidden=3, sigma=1)
+rbf_network = RBFNetwork(n_hidden=6, sigma=1)
 
 # 训练模型
 rbf_network.fit(X, Y)
