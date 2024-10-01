@@ -39,7 +39,7 @@ class MLP:
         return self.a2
     
     # backward propagation
-    def backward(self, X, Y, learning_rate=0.001):
+    def backward(self, X, Y, learning_rate=0.01):
         
         m = Y.size  # number of samples
 
@@ -60,7 +60,7 @@ class MLP:
         self.b1 -= learning_rate * np.sum(hidden_delta, axis=0) / m
 
     # training
-    def train(self, X, Y, epochs=1000):
+    def train(self, X, Y, epochs=5000):
         for _ in range(epochs):
             self.forward(X)  # forward propagation
             self.backward(X, Y)  # backward propagation
@@ -87,7 +87,7 @@ print("W2:", mlp.W2)
 print("b2:", mlp.b2)
 
 # train
-mlp.train(X, Y, epochs=10000)
+mlp.train(X, Y, epochs=5000)
 
 # print trained weights and biases
 print("Trained weights and biases:")

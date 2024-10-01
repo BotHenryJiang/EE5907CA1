@@ -14,7 +14,8 @@ class RBFNetwork:
         self.n_hidden = n_hidden
         self.sigma = sigma
         # random select RBF centers
-        self.centers = np.random.uniform(np.min(X, axis=0), np.max(X, axis=0), (n_hidden, X.shape[1]))
+        indices = np.random.choice(X.shape[0], n_hidden, replace=False)  # random select n_hidden data points as centers
+        self.centers = X[indices]  
         self.weights = np.zeros((n_hidden, 1))  # initialize output layer weights
 
     def gaussian(self, x, center):
